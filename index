@@ -1,0 +1,984 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://code.iconify.design; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://images.unsplash.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+    <title>ProTech | High-End Audio Repair &amp; Event Equipment</title>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #06080c; 
+            color-scheme: dark;
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-base);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Minimal scrollbar */
+        ::-webkit-scrollbar { width: 0.35rem; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+        select, input[type="date"] { 
+            -webkit-appearance: none; 
+            -moz-appearance: none; 
+            appearance: none; 
+            color-scheme: dark;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1) opacity(0.5);
+            cursor: pointer;
+        }
+
+        /* Smooth page transitions */
+        .page-enter { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); filter: blur(4px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        /* Cinematic Animations */
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+        .animate-slow-zoom {
+            animation: slowZoom 30s alternate infinite ease-in-out;
+        }
+
+        @keyframes ambientGlow {
+            0%, 100% { opacity: 0.4; filter: blur(80px) scale(1); }
+            50% { opacity: 0.7; filter: blur(100px) scale(1.1); }
+        }
+        .animate-ambient-glow {
+            animation: ambientGlow 8s infinite ease-in-out;
+        }
+
+        /* Premium Noise Texture */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        ::selection {
+            background: rgba(56, 189, 248, 0.2);
+            color: #ffffff;
+        }
+
+        /* Custom Input Styling */
+        input:focus, select:focus, textarea:focus {
+            box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4), 0 0 20px rgba(56, 189, 248, 0.1);
+        }
+    </style>
+</head>
+<body class="text-slate-400 flex flex-col min-h-screen overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-[#06080c]/60 backdrop-blur-2xl border-b border-white/[0.04]">
+        <!-- Top Info Bar -->
+        <div class="hidden md:flex items-center justify-center gap-6 py-1.5 bg-black/40 border-b border-white/[0.02] text-xs font-light text-slate-500 tracking-wide">
+            <span class="flex items-center gap-1.5"><iconify-icon icon="solar:map-point-linear" class="text-sky-500 drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]"></iconify-icon> 12110 Tech Road, Silver Spring, MD</span>
+            <span class="w-1 h-1 rounded-full bg-slate-800"></span>
+            <span class="flex items-center gap-1.5"><iconify-icon icon="solar:clock-circle-linear" class="text-sky-500 drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]"></iconify-icon> Local Drop-off &amp; Diagnostics</span>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#home" class="flex items-center group">
+                <span class="text-slate-100 font-medium tracking-tighter text-lg leading-tight transition-all duration-300 drop-shadow-[0_0_12px_rgba(255,255,255,0.1)] group-hover:drop-shadow-[0_0_16px_rgba(56,189,248,0.5)] group-hover:text-sky-100">ProTech</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-light">
+                <a href="#home" class="desktop-nav-link text-slate-400 hover:text-slate-100 transition-colors duration-300">Home</a>
+                <a href="#repairs" class="desktop-nav-link text-slate-400 hover:text-slate-100 transition-colors duration-300">Repairs</a>
+                <a href="#rentals" class="desktop-nav-link text-slate-400 hover:text-slate-100 transition-colors duration-300">Rentals</a>
+                <a href="#sales" class="desktop-nav-link text-slate-400 hover:text-slate-100 transition-colors duration-300">Sales</a>
+                <a href="#contact" class="desktop-nav-link text-slate-400 hover:text-slate-100 transition-colors duration-300">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="tel:2404500308" class="hidden lg:inline-flex items-center gap-2 text-xs font-medium text-slate-200 bg-white/[0.03] border border-white/[0.08] rounded-full px-5 py-2 hover:bg-white/[0.06] hover:border-white/[0.15] hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-500 backdrop-blur-md">
+                    <iconify-icon icon="solar:phone-linear" class="text-sky-400 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]" stroke-width="1.5"></iconify-icon>
+                    (240) 450-0308
+                </a>
+                <button id="mobile-menu-btn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-slate-400 hover:text-slate-100 p-1 transition-colors">
+                    <iconify-icon icon="solar:hamburger-menu-linear" class="text-xl" stroke-width="1.5"></iconify-icon>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/[0.04] bg-[#06080c]/95 backdrop-blur-3xl px-6 py-6 space-y-5">
+            <a href="#home" class="mobile-nav-link block text-sm font-light text-slate-400 hover:text-slate-100">Home</a>
+            <a href="#repairs" class="mobile-nav-link block text-sm font-light text-slate-400 hover:text-slate-100">Repairs</a>
+            <a href="#rentals" class="mobile-nav-link block text-sm font-light text-slate-400 hover:text-slate-100">Rentals</a>
+            <a href="#rental-request" class="mobile-nav-link block text-sm font-light text-slate-400 hover:text-slate-100">Request Rental</a>
+            <a href="#sales" class="mobile-nav-link block text-sm font-light text-slate-400 hover:text-slate-100">Sales</a>
+            <a href="#contact" class="mobile-nav-link block text-sm font-light text-slate-400 hover:text-slate-100">Contact</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+
+        <!-- ========================= HOME PAGE ========================= -->
+        <div id="page-home" class="page-section hidden">
+            
+            <!-- Cinematic Hero -->
+            <section class="relative min-h-[95vh] flex flex-col items-center justify-center text-center overflow-hidden pt-20">
+                <!-- Parallax Background Image -->
+                <div class="absolute inset-0 z-0 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&amp;fit=crop&amp;w=2500&amp;q=80" alt="Live Concert Crowd" class="w-full h-full object-cover animate-slow-zoom opacity-80 mix-blend-lighten">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#06080c]/60 via-[#06080c]/80 to-[#06080c]"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#06080c] via-transparent to-transparent h-40 bottom-0"></div>
+                </div>
+
+                <!-- Animated Glow Orbs behind text -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[40vh] bg-sky-600/20 rounded-full blur-[120px] animate-ambient-glow z-0 pointer-events-none mix-blend-screen"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[30vh] bg-indigo-600/20 rounded-full blur-[100px] animate-ambient-glow z-0 pointer-events-none mix-blend-screen" style="animation-delay: -4s;"></div>
+
+                <div class="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center">
+                    
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-normal tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-200 to-slate-500 mb-6 leading-[1.05] drop-shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+                        Professional Audio Repair &amp;<br> Event Equipment
+                    </h1>
+                    
+                    <p class="text-base md:text-lg text-slate-300 max-w-3xl mb-12 leading-relaxed font-light drop-shadow-md">
+                        From precision component-level repairs to full event setups, ProTech keeps your sound running and your events flawless.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto">
+                        <a href="#repairs" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-sky-500/10 border border-sky-500/30 text-sky-100 px-8 py-4 text-sm font-medium rounded-full hover:bg-sky-500 hover:text-white hover:border-sky-400 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(56,189,248,0.5)] transition-all duration-500 backdrop-blur-xl">
+                            Request a Repair
+                        </a>
+                        <a href="#rentals" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/[0.03] border border-white/[0.08] text-slate-200 px-8 py-4 text-sm font-normal rounded-full hover:bg-white/[0.08] hover:border-white/[0.2] hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-500 backdrop-blur-xl group">
+                            Check Rental Availability
+                            <iconify-icon icon="solar:arrow-right-linear" stroke-width="1.5" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4 Feature Boxes - Glassmorphism -->
+            <section class="border-y border-white/[0.02] bg-[#06080c]/50 backdrop-blur-md py-16 relative overflow-hidden z-20">
+                <div class="max-w-7xl mx-auto px-6 relative z-10">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
+                        <div class="flex flex-col gap-4 group cursor-default">
+                            <div class="w-12 h-12 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex items-center justify-center group-hover:border-sky-500/30 group-hover:bg-sky-500/[0.02] group-hover:shadow-[0_0_30px_rgba(56,189,248,0.1)] transition-all duration-500">
+                                <iconify-icon icon="solar:cpu-bolt-linear" class="text-2xl text-slate-400 group-hover:text-sky-400 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.8)] transition-all duration-500" stroke-width="1.5"></iconify-icon>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-100 font-normal text-sm mb-1.5 tracking-tight">Component Level</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed font-light">Deep diagnostics and reliable board-level fixes.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 group cursor-default">
+                            <div class="w-12 h-12 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex items-center justify-center group-hover:border-indigo-500/30 group-hover:bg-indigo-500/[0.02] group-hover:shadow-[0_0_30px_rgba(99,102,241,0.1)] transition-all duration-500">
+                                <iconify-icon icon="solar:music-notes-linear" class="text-2xl text-slate-400 group-hover:text-indigo-400 group-hover:drop-shadow-[0_0_12px_rgba(99,102,241,0.8)] transition-all duration-500" stroke-width="1.5"></iconify-icon>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-100 font-normal text-sm mb-1.5 tracking-tight">Vintage &amp; Modern</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed font-light">From classic hi-fi to digital mixing consoles.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 group cursor-default">
+                            <div class="w-12 h-12 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex items-center justify-center group-hover:border-sky-500/30 group-hover:bg-sky-500/[0.02] group-hover:shadow-[0_0_30px_rgba(56,189,248,0.1)] transition-all duration-500">
+                                <iconify-icon icon="solar:box-linear" class="text-2xl text-slate-400 group-hover:text-sky-400 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.8)] transition-all duration-500" stroke-width="1.5"></iconify-icon>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-100 font-normal text-sm mb-1.5 tracking-tight">Full Event Rentals</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed font-light">Audio, lighting, stage, and professional FX gear.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 group cursor-default">
+                            <div class="w-12 h-12 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex items-center justify-center group-hover:border-indigo-500/30 group-hover:bg-indigo-500/[0.02] group-hover:shadow-[0_0_30px_rgba(99,102,241,0.1)] transition-all duration-500">
+                                <iconify-icon icon="solar:map-point-linear" class="text-2xl text-slate-400 group-hover:text-indigo-400 group-hover:drop-shadow-[0_0_12px_rgba(99,102,241,0.8)] transition-all duration-500" stroke-width="1.5"></iconify-icon>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-100 font-normal text-sm mb-1.5 tracking-tight">Silver Spring Shop</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed font-light">Local trusted business serving the DMV area.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Service Cards -->
+            <section class="max-w-7xl mx-auto px-6 py-32 relative z-20">
+                <div class="grid lg:grid-cols-3 gap-8">
+                    
+                    <a href="#repairs" class="group relative rounded-[2rem] overflow-hidden bg-[#0a0c10] border border-white/[0.04] hover:border-sky-500/30 transition-all duration-700 flex flex-col h-full shadow-[0_8px_32px_rgba(0,0,0,0.6)] hover:shadow-[0_16px_48px_rgba(56,189,248,0.1)]">
+                        <div class="h-64 overflow-hidden relative border-b border-white/[0.02]">
+                            <img src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Circuit Board Repair" loading="lazy" decoding="async" class="w-full h-full object-cover opacity-40 group-hover:scale-110 group-hover:opacity-70 transition-all duration-[1.5s] ease-out grayscale group-hover:grayscale-0 mix-blend-lighten">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/40 to-transparent"></div>
+                            <div class="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-slate-300 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                                <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="group-hover:text-sky-400 group-hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.8)] transition-all"></iconify-icon>
+                            </div>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col justify-end relative z-10 bg-gradient-to-t from-[#0a0c10] to-transparent">
+                            <div class="inline-flex items-center gap-2 text-xs text-sky-400 mb-4 font-medium tracking-widest uppercase drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">
+                                <iconify-icon icon="solar:wrench-linear" stroke-width="1.5"></iconify-icon> Service
+                            </div>
+                            <h3 class="text-2xl font-normal tracking-tight text-slate-50 mb-4 group-hover:text-white transition-colors">Equipment Repair</h3>
+                            <p class="text-sm text-slate-400 leading-relaxed font-light">Mixers, amplifiers, speakers, keyboards, and vintage hi-fi — diagnosed and repaired at the component level. $75 bench fee applies.</p>
+                        </div>
+                    </a>
+
+                    <a href="#rentals" class="group relative rounded-[2rem] overflow-hidden bg-[#0a0c10] border border-white/[0.04] hover:border-indigo-500/30 transition-all duration-700 flex flex-col h-full shadow-[0_8px_32px_rgba(0,0,0,0.6)] hover:shadow-[0_16px_48px_rgba(99,102,241,0.1)]">
+                        <div class="h-64 overflow-hidden relative border-b border-white/[0.02]">
+                            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Live Event Speakers" loading="lazy" decoding="async" class="w-full h-full object-cover opacity-40 group-hover:scale-110 group-hover:opacity-70 transition-all duration-[1.5s] ease-out grayscale group-hover:grayscale-0 mix-blend-lighten">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/40 to-transparent"></div>
+                            <div class="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-slate-300 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                                <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="group-hover:text-indigo-400 group-hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.8)] transition-all"></iconify-icon>
+                            </div>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col justify-end relative z-10 bg-gradient-to-t from-[#0a0c10] to-transparent">
+                            <div class="inline-flex items-center gap-2 text-xs text-indigo-400 mb-4 font-medium tracking-widest uppercase drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]">
+                                <iconify-icon icon="solar:soundwave-linear" stroke-width="1.5"></iconify-icon> Rental
+                            </div>
+                            <h3 class="text-2xl font-normal tracking-tight text-slate-50 mb-4 group-hover:text-white transition-colors">Event Gear Rentals</h3>
+                            <p class="text-sm text-slate-400 leading-relaxed font-light">PA systems, subwoofers, lighting rigs, truss, stage, fog machines, cold sparks, and more for events of any size.</p>
+                        </div>
+                    </a>
+
+                    <a href="#sales" class="group relative rounded-[2rem] overflow-hidden bg-[#0a0c10] border border-white/[0.04] hover:border-purple-500/30 transition-all duration-700 flex flex-col h-full shadow-[0_8px_32px_rgba(0,0,0,0.6)] hover:shadow-[0_16px_48px_rgba(168,85,247,0.1)]">
+                        <div class="h-64 overflow-hidden relative border-b border-white/[0.02]">
+                            <img src="https://images.unsplash.com/photo-1461784180009-21121b2f204c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Vintage Audio Gear" loading="lazy" decoding="async" class="w-full h-full object-cover opacity-40 group-hover:scale-110 group-hover:opacity-70 transition-all duration-[1.5s] ease-out grayscale group-hover:grayscale-0 mix-blend-lighten">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/40 to-transparent"></div>
+                            <div class="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-slate-300 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                                <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="group-hover:text-purple-400 group-hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] transition-all"></iconify-icon>
+                            </div>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col justify-end relative z-10 bg-gradient-to-t from-[#0a0c10] to-transparent">
+                            <div class="inline-flex items-center gap-2 text-xs text-purple-400 mb-4 font-medium tracking-widest uppercase drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]">
+                                <iconify-icon icon="solar:tag-price-linear" stroke-width="1.5"></iconify-icon> Store
+                            </div>
+                            <h3 class="text-2xl font-normal tracking-tight text-slate-50 mb-4 group-hover:text-white transition-colors">Used &amp; Refurbished</h3>
+                            <p class="text-sm text-slate-400 leading-relaxed font-light">Rotating inventory of tested, repaired, and ready-to-go gear — refurbished pro audio, vintage hi-fi, and used stage equipment.</p>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <!-- CTA Strip -->
+            <section class="border-t border-white/[0.02] bg-gradient-to-b from-[#0a0c10] to-[#06080c] py-20 relative overflow-hidden z-20">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-sky-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+                <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 relative z-10">
+                    <div>
+                        <h2 class="text-3xl font-normal tracking-tight text-slate-50 mb-3">Need a repair or planning an event?</h2>
+                        <p class="text-base text-slate-400 font-light">Reach out to our Silver Spring shop via phone or message.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
+                        <a href="tel:2404500308" class="inline-flex items-center justify-center gap-2 bg-white/[0.03] border border-white/[0.08] text-slate-200 px-8 py-4 text-sm font-normal rounded-full hover:bg-white/[0.08] hover:border-white/[0.2] transition-all duration-300 backdrop-blur-xl">
+                            <iconify-icon icon="solar:phone-linear" class="text-sky-400 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]" stroke-width="1.5"></iconify-icon>
+                            (240) 450-0308
+                        </a>
+                        <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-slate-100 text-[#06080c] px-8 py-4 text-sm font-medium rounded-full hover:bg-white hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-300">
+                            Send a Message
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================= REPAIRS PAGE ========================= -->
+        <div id="page-repairs" class="page-section hidden pt-24 pb-32">
+            <div class="max-w-7xl mx-auto px-6 mt-12 md:mt-20">
+                <!-- Header -->
+                <div class="max-w-3xl mb-24 relative">
+                    <div class="absolute -top-20 -left-20 w-[400px] h-[400px] bg-sky-600/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+                    <h1 class="text-5xl md:text-7xl font-normal tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-8 leading-[1.1] relative z-10">Audio Equipment Repair</h1>
+                    <p class="text-base md:text-lg text-slate-400 leading-relaxed font-light relative z-10">
+                        We perform professional, component-level repairs in Silver Spring. Drop off your gear for a proper diagnosis, an honest estimate, and a reliable fix.
+                    </p>
+                </div>
+
+                <!-- Process -->
+                <div class="mb-32 relative z-10">
+                    <h3 class="text-2xl font-normal tracking-tight text-slate-50 mb-12">How It Works</h3>
+                    <div class="grid md:grid-cols-3 gap-8 relative">
+                        <!-- Connecting Line -->
+                        <div class="hidden md:block absolute top-10 left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent z-0"></div>
+                        
+                        <div class="relative z-10 p-10 rounded-[2rem] bg-[#0a0c10]/80 border border-white/[0.04] flex flex-col items-start backdrop-blur-xl shadow-2xl">
+                            <div class="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-xl font-normal text-slate-300 mb-8">1</div>
+                            <h4 class="text-xl font-normal tracking-tight text-slate-100 mb-4">Drop It Off</h4>
+                            <p class="text-sm text-slate-400 font-light leading-relaxed">Bring your gear to our Tech Road shop. Pay the bench fee and we'll log it securely for the bench.</p>
+                        </div>
+                        <div class="relative z-10 p-10 rounded-[2rem] bg-[#0a0c10]/80 border border-white/[0.04] flex flex-col items-start backdrop-blur-xl shadow-2xl">
+                            <div class="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-xl font-normal text-slate-300 mb-8">2</div>
+                            <h4 class="text-xl font-normal tracking-tight text-slate-100 mb-4">Diagnose &amp; Estimate</h4>
+                            <p class="text-sm text-slate-400 font-light leading-relaxed">We find the root cause, not just symptoms. You get a clear estimate before any major work begins.</p>
+                        </div>
+                        <div class="relative z-10 p-10 rounded-[2rem] bg-gradient-to-b from-[#0a0c10] to-[#0a0c10]/80 border border-sky-500/20 flex flex-col items-start backdrop-blur-xl shadow-[0_0_40px_rgba(56,189,248,0.05)]">
+                            <div class="absolute inset-0 bg-sky-500/[0.02] rounded-[2rem] pointer-events-none"></div>
+                            <div class="w-16 h-16 rounded-2xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-xl font-normal text-sky-400 mb-8 drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">3</div>
+                            <h4 class="text-xl font-normal tracking-tight text-slate-100 mb-4">Repaired &amp; Ready</h4>
+                            <p class="text-sm text-slate-400 font-light leading-relaxed">Once approved, we complete the repair and test thoroughly. Pick it up ready for your next gig.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bench Fee Policy -->
+                <div class="mb-32 p-10 md:p-12 rounded-[2.5rem] border border-white/[0.04] bg-[#0a0c10]/80 flex flex-col md:flex-row gap-10 items-start md:items-center relative overflow-hidden backdrop-blur-xl shadow-2xl">
+                    <div class="absolute -right-32 -top-32 w-96 h-96 bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+                    <div class="w-20 h-20 rounded-[1.5rem] bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-slate-300 flex-shrink-0 relative z-10">
+                        <iconify-icon icon="solar:wad-of-money-linear" class="text-4xl text-indigo-400 drop-shadow-[0_0_12px_rgba(99,102,241,0.6)]" stroke-width="1.5"></iconify-icon>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-normal tracking-tight text-slate-50 mb-3">$75 Bench Fee Policy</h3>
+                        <p class="text-base text-slate-400 leading-relaxed font-light max-w-3xl">
+                            We charge a <span class="text-slate-200 font-medium">$75 bench fee per item</span> at drop-off. If you approve the final estimate, this fee is directly applied to your total repair cost. If declined, it covers our dedicated diagnostic time.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Repair Categories -->
+                <h3 class="text-2xl font-normal tracking-tight text-slate-50 mb-10">What We Repair</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20 relative z-10">
+                    <div class="p-10 rounded-[2rem] border border-white/[0.03] bg-[#0a0c10]/60 hover:bg-[#0a0c10] hover:border-white/[0.08] transition-all duration-500 group">
+                        <iconify-icon icon="solar:slider-minimalistic-horizontal-linear" class="text-4xl text-sky-500 mb-6 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.6)] transition-all" stroke-width="1.5"></iconify-icon>
+                        <h4 class="text-lg font-normal tracking-tight text-slate-100 mb-4">Mixers &amp; Consoles</h4>
+                        <ul class="space-y-3 text-sm text-slate-400 font-light">
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Analog mixing boards</li>
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Digital mixers &amp; encoders</li>
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> DJ mixers &amp; controllers</li>
+                        </ul>
+                    </div>
+                    <div class="p-10 rounded-[2rem] border border-white/[0.03] bg-[#0a0c10]/60 hover:bg-[#0a0c10] hover:border-white/[0.08] transition-all duration-500 group">
+                        <iconify-icon icon="solar:speaker-minimalistic-linear" class="text-4xl text-sky-500 mb-6 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.6)] transition-all" stroke-width="1.5"></iconify-icon>
+                        <h4 class="text-lg font-normal tracking-tight text-slate-100 mb-4">Amps &amp; Speakers</h4>
+                        <ul class="space-y-3 text-sm text-slate-400 font-light">
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Power &amp; integrated amps</li>
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Active &amp; passive speakers</li>
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Subwoofers &amp; monitors</li>
+                        </ul>
+                    </div>
+                    <div class="p-10 rounded-[2rem] border border-white/[0.03] bg-[#0a0c10]/60 hover:bg-[#0a0c10] hover:border-white/[0.08] transition-all duration-500 group">
+                        <iconify-icon icon="solar:piano-linear" class="text-4xl text-sky-500 mb-6 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.6)] transition-all" stroke-width="1.5"></iconify-icon>
+                        <h4 class="text-lg font-normal tracking-tight text-slate-100 mb-4">Keyboards &amp; Synths</h4>
+                        <ul class="space-y-3 text-sm text-slate-400 font-light">
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Weighted action issues</li>
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Synthesizers &amp; workstations</li>
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Power supply failures</li>
+                        </ul>
+                    </div>
+                    <div class="p-10 rounded-[2rem] border border-white/[0.03] bg-[#0a0c10]/60 hover:bg-[#0a0c10] hover:border-white/[0.08] transition-all duration-500 group">
+                        <iconify-icon icon="solar:vinyl-record-linear" class="text-4xl text-sky-500 mb-6 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.6)] transition-all" stroke-width="1.5"></iconify-icon>
+                        <h4 class="text-lg font-normal tracking-tight text-slate-100 mb-4">Vintage Hi-Fi</h4>
+                        <ul class="space-y-3 text-sm text-slate-400 font-light">
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Stereo receiver recapping</li>
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Turntable calibration</li>
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Tape decks &amp; CD players</li>
+                        </ul>
+                    </div>
+                    <div class="p-10 rounded-[2rem] border border-white/[0.03] bg-[#0a0c10]/60 hover:bg-[#0a0c10] hover:border-white/[0.08] transition-all duration-500 group">
+                        <iconify-icon icon="solar:routing-linear" class="text-4xl text-sky-500 mb-6 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.6)] transition-all" stroke-width="1.5"></iconify-icon>
+                        <h4 class="text-lg font-normal tracking-tight text-slate-100 mb-4">Outboard &amp; Signal</h4>
+                        <ul class="space-y-3 text-sm text-slate-400 font-light">
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> EQs &amp; compressors</li>
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Crossovers &amp; racks</li>
+                            <li class="flex items-center gap-3"><div class="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-sky-500 transition-colors"></div> Wireless mic systems</li>
+                        </ul>
+                    </div>
+                    <div class="p-10 rounded-[2rem] border border-white/[0.03] bg-[#0a0c10]/40 flex flex-col justify-center text-center items-center">
+                        <iconify-icon icon="solar:question-circle-linear" class="text-4xl text-slate-600 mb-5" stroke-width="1.5"></iconify-icon>
+                        <h4 class="text-lg font-normal tracking-tight text-slate-100 mb-3">Unsure? Just Ask.</h4>
+                        <p class="text-sm text-slate-500 font-light leading-relaxed mb-6">Give us a call before driving over. We provide honest answers about repairability.</p>
+                        <a href="tel:2404500308" class="inline-flex items-center gap-2 text-sm font-medium text-slate-200 hover:text-white transition-all duration-300 bg-white/[0.03] border border-white/[0.08] px-6 py-3 rounded-full hover:bg-white/[0.08]">
+                            <iconify-icon icon="solar:phone-linear" class="text-sky-400 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]" stroke-width="1.5"></iconify-icon>
+                            (240) 450-0308
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pt-16 border-t border-white/[0.04] flex justify-center">
+                    <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-slate-100 text-[#06080c] px-10 py-4 text-sm font-medium rounded-full hover:bg-white hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-300">
+                        Message Us About a Repair
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================= RENTALS PAGE ========================= -->
+        <div id="page-rentals" class="page-section hidden pt-24 pb-32">
+            <div class="max-w-7xl mx-auto px-6 mt-12 md:mt-20">
+                <!-- Hero -->
+                <div class="max-w-3xl mb-24 relative z-10">
+                    <div class="absolute -top-20 -left-20 w-[400px] h-[400px] bg-purple-600/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+                    <h1 class="text-5xl md:text-7xl font-normal tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-8 leading-[1.1] relative z-10">Event Equipment Rentals</h1>
+                    <p class="text-base md:text-lg text-slate-400 leading-relaxed font-light mb-10 relative z-10">
+                        Professional audio, lighting, staging, and effects for events of all sizes. Built for reliability, delivered for impact. Perfect for weddings, DJ events, live bands, corporate functions, and outdoor gatherings.
+                    </p>
+                    <div class="flex flex-wrap gap-3 relative z-10">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.02] text-xs text-slate-300 backdrop-blur-md shadow-lg"><div class="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]"></div> Weddings</span>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.02] text-xs text-slate-300 backdrop-blur-md shadow-lg"><div class="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]"></div> DJ Events</span>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.02] text-xs text-slate-300 backdrop-blur-md shadow-lg"><div class="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]"></div> Live Bands</span>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.02] text-xs text-slate-300 backdrop-blur-md shadow-lg"><div class="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]"></div> Corporate</span>
+                    </div>
+                </div>
+
+                <!-- Catalog Grid -->
+                <div class="space-y-32 relative z-10">
+                    
+                    <!-- Audio & PA -->
+                    <div>
+                        <h2 class="text-3xl font-normal tracking-tight text-slate-50 mb-10 flex items-center gap-4 border-b border-white/[0.04] pb-6">
+                            <iconify-icon icon="solar:speaker-minimalistic-linear" class="text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.6)]" stroke-width="1.5"></iconify-icon> Audio &amp; PA Systems
+                        </h2>
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="p-8 rounded-[2rem] bg-[#0a0c10]/60 border border-white/[0.03] hover:bg-[#0a0c10] hover:border-white/[0.08] transition-colors flex flex-col h-full">
+                                <h4 class="text-lg font-normal text-slate-100 mb-2">Speakers</h4>
+                                <p class="text-xs text-slate-500 mb-6 font-light">Active &amp; passive tops</p>
+                                <ul class="space-y-3 text-sm text-slate-400 font-light mt-auto">
+                                    <li>Active 10", 12", 15" mains</li>
+                                    <li>Stage monitors / wedges</li>
+                                    <li>Column PA systems</li>
+                                </ul>
+                            </div>
+                            <div class="p-8 rounded-[2rem] bg-[#0a0c10]/60 border border-white/[0.03] hover:bg-[#0a0c10] hover:border-white/[0.08] transition-colors flex flex-col h-full">
+                                <h4 class="text-lg font-normal text-slate-100 mb-2">Subwoofers</h4>
+                                <p class="text-xs text-slate-500 mb-6 font-light">Low-end reinforcement</p>
+                                <ul class="space-y-3 text-sm text-slate-400 font-light mt-auto">
+                                    <li>Active 15" &amp; 18" subs</li>
+                                    <li>Single or stacked pairs</li>
+                                </ul>
+                            </div>
+                            <div class="p-8 rounded-[2rem] bg-[#0a0c10]/60 border border-white/[0.03] hover:bg-[#0a0c10] hover:border-white/[0.08] transition-colors flex flex-col h-full">
+                                <h4 class="text-lg font-normal text-slate-100 mb-2">Mixers</h4>
+                                <p class="text-xs text-slate-500 mb-6 font-light">Analog &amp; digital boards</p>
+                                <ul class="space-y-3 text-sm text-slate-400 font-light mt-auto">
+                                    <li>Small analog (8-12ch)</li>
+                                    <li>Digital with iPad control</li>
+                                </ul>
+                            </div>
+                            <div class="p-8 rounded-[2rem] bg-[#0a0c10]/60 border border-white/[0.03] hover:bg-[#0a0c10] hover:border-white/[0.08] transition-colors flex flex-col h-full">
+                                <h4 class="text-lg font-normal text-slate-100 mb-2">Mics &amp; Wireless</h4>
+                                <p class="text-xs text-slate-500 mb-6 font-light">Vocal &amp; instrument</p>
+                                <ul class="space-y-3 text-sm text-slate-400 font-light mt-auto">
+                                    <li>Handheld wireless</li>
+                                    <li>Lavalier systems</li>
+                                    <li>Dynamic &amp; condenser wired</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lighting, Stage & DJ -->
+                    <div>
+                        <h2 class="text-3xl font-normal tracking-tight text-slate-50 mb-10 flex items-center gap-4 border-b border-white/[0.04] pb-6">
+                            <iconify-icon icon="solar:sun-linear" class="text-purple-400 drop-shadow-[0_0_12px_rgba(168,85,247,0.6)]" stroke-width="1.5"></iconify-icon> Lighting, Stage &amp; DJ
+                        </h2>
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="p-8 rounded-[2rem] bg-[#0a0c10]/60 border border-white/[0.03] hover:bg-[#0a0c10] hover:border-white/[0.08] transition-colors flex flex-col h-full">
+                                <h4 class="text-lg font-normal text-slate-100 mb-2">Intelligent Lighting</h4>
+                                <p class="text-xs text-slate-500 mb-6 font-light">Moving heads &amp; wash</p>
+                                <ul class="space-y-3 text-sm text-slate-400 font-light mt-auto">
+                                    <li>Wash &amp; spot fixtures</li>
+                                    <li>Wireless uplighting sets</li>
+                                    <li>DMX control consoles</li>
+                                </ul>
+                            </div>
+                            <div class="p-8 rounded-[2rem] bg-[#0a0c10]/60 border border-white/[0.03] hover:bg-[#0a0c10] hover:border-white/[0.08] transition-colors flex flex-col h-full">
+                                <h4 class="text-lg font-normal text-slate-100 mb-2">Special FX</h4>
+                                <p class="text-xs text-slate-500 mb-6 font-light">Atmosphere control</p>
+                                <ul class="space-y-3 text-sm text-slate-400 font-light mt-auto">
+                                    <li>Haze &amp; fog machines</li>
+                                    <li>Cold spark units</li>
+                                    <li>CO₂ jets</li>
+                                </ul>
+                            </div>
+                            <div class="p-8 rounded-[2rem] bg-[#0a0c10]/60 border border-white/[0.03] hover:bg-[#0a0c10] hover:border-white/[0.08] transition-colors flex flex-col h-full">
+                                <h4 class="text-lg font-normal text-slate-100 mb-2">Staging &amp; Truss</h4>
+                                <p class="text-xs text-slate-500 mb-6 font-light">Structural support</p>
+                                <ul class="space-y-3 text-sm text-slate-400 font-light mt-auto">
+                                    <li>Box truss &amp; crank stands</li>
+                                    <li>Portable stage risers</li>
+                                </ul>
+                            </div>
+                            <div class="p-8 rounded-[2rem] bg-[#0a0c10]/60 border border-white/[0.03] hover:bg-[#0a0c10] hover:border-white/[0.08] transition-colors flex flex-col h-full">
+                                <h4 class="text-lg font-normal text-slate-100 mb-2">DJ &amp; Support Gear</h4>
+                                <p class="text-xs text-slate-500 mb-6 font-light">Booth &amp; accessories</p>
+                                <ul class="space-y-3 text-sm text-slate-400 font-light mt-auto">
+                                    <li>Pioneer CDJs &amp; mixers</li>
+                                    <li>DJ facades &amp; tables</li>
+                                    <li>Cabling &amp; power distro</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Trust & CTA -->
+                <div class="mt-32 p-12 rounded-[2.5rem] bg-gradient-to-br from-[#0a0c10]/80 to-transparent border border-white/[0.04] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 backdrop-blur-xl relative overflow-hidden shadow-2xl">
+                    <div class="absolute inset-0 bg-purple-500/[0.02] pointer-events-none"></div>
+                    <div class="relative z-10 max-w-2xl">
+                        <h3 class="text-3xl font-normal tracking-tight text-slate-50 mb-4">Ready to book your event gear?</h3>
+                        <p class="text-base text-slate-400 font-light leading-relaxed">
+                            Contact us for current availability and pricing. We require a valid credit card on file to secure reservations.
+                        </p>
+                    </div>
+                    <div class="relative z-10">
+                        <a href="#rental-request" class="inline-flex whitespace-nowrap items-center justify-center gap-2 bg-purple-500/10 border border-purple-500/30 text-purple-100 px-10 py-5 text-sm font-medium rounded-full hover:bg-purple-500 hover:text-white hover:border-purple-400 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-all duration-500">
+                            Request Rental Availability
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================= RENTAL REQUEST PAGE ========================= -->
+        <div id="page-rental-request" class="page-section hidden pt-24 pb-32">
+            <div class="max-w-4xl mx-auto px-6 mt-12 md:mt-20 relative z-10">
+                <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
+                
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl md:text-7xl font-normal tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-6 leading-[1.1]">Send a Rental Request</h1>
+                    <p class="text-base md:text-lg text-slate-400 font-light max-w-2xl mx-auto leading-relaxed">
+                        This form is a request for availability and pricing, not an instant booking. Fill out the details below and a ProTech team member will follow up shortly to confirm your reservation.
+                    </p>
+                </div>
+
+                <div class="bg-[#0a0c10]/80 border border-white/[0.04] rounded-[2.5rem] p-8 md:p-12 backdrop-blur-2xl relative shadow-[0_16px_64px_rgba(0,0,0,0.5)]">
+                    <div id="rental-form-success" class="hidden mb-10 p-5 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center gap-4 text-sky-400 text-sm font-medium shadow-[0_0_20px_rgba(56,189,248,0.1)]">
+                        <iconify-icon icon="solar:check-circle-linear" class="text-2xl flex-shrink-0 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]"></iconify-icon>
+                        <span>Request submitted successfully. We will review availability and contact you soon.</span>
+                    </div>
+
+                    <form id="rental-request-form" class="space-y-10">
+                        
+                        <!-- Contact Info Section -->
+                        <div>
+                            <h3 class="text-xs font-medium text-slate-500 uppercase tracking-widest mb-6 border-b border-white/[0.04] pb-3">Contact Information</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-2.5">
+                                    <label for="reqName" class="text-xs font-light text-slate-400">Full Name *</label>
+                                    <input type="text" id="reqName" required="" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-300">
+                                </div>
+                                <div class="space-y-2.5">
+                                    <label for="reqCompany" class="text-xs font-light text-slate-400">Company / Event Name</label>
+                                    <input type="text" id="reqCompany" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-300">
+                                </div>
+                                <div class="space-y-2.5">
+                                    <label for="reqPhone" class="text-xs font-light text-slate-400">Phone Number *</label>
+                                    <input type="tel" id="reqPhone" required="" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-300">
+                                </div>
+                                <div class="space-y-2.5">
+                                    <label for="reqEmail" class="text-xs font-light text-slate-400">Email Address *</label>
+                                    <input type="email" id="reqEmail" required="" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-300">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Event Details Section -->
+                        <div>
+                            <h3 class="text-xs font-medium text-slate-500 uppercase tracking-widest mb-6 border-b border-white/[0.04] pb-3">Event Details</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-2.5">
+                                    <label for="reqDate" class="text-xs font-light text-slate-400">Event Date *</label>
+                                    <input type="date" id="reqDate" required="" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 outline-none transition-all duration-300">
+                                </div>
+                                <div class="space-y-2.5">
+                                    <label for="reqLocation" class="text-xs font-light text-slate-400">Event Location (City, Venue) *</label>
+                                    <input type="text" id="reqLocation" required="" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-300">
+                                </div>
+                                <div class="space-y-2.5">
+                                    <label for="reqType" class="text-xs font-light text-slate-400">Event Type</label>
+                                    <div class="relative">
+                                        <select id="reqType" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 outline-none transition-all duration-300 cursor-pointer">
+                                            <option value="" disabled="" selected="">Select event type...</option>
+                                            <option value="wedding">Wedding</option>
+                                            <option value="corporate">Corporate Event</option>
+                                            <option value="live_band">Live Band / Concert</option>
+                                            <option value="dj">DJ Event / Party</option>
+                                            <option value="outdoor">Outdoor Festival</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-5 flex items-center pointer-events-none text-slate-500">
+                                            <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="space-y-2.5">
+                                    <label for="reqGuests" class="text-xs font-light text-slate-400">Estimated Guest Count</label>
+                                    <div class="relative">
+                                        <select id="reqGuests" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 outline-none transition-all duration-300 cursor-pointer">
+                                            <option value="" disabled="" selected="">Select range...</option>
+                                            <option value="under50">Under 50</option>
+                                            <option value="50-150">50 - 150</option>
+                                            <option value="150-300">150 - 300</option>
+                                            <option value="300-500">300 - 500</option>
+                                            <option value="500+">500+</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-5 flex items-center pointer-events-none text-slate-500">
+                                            <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Equipment Section -->
+                        <div>
+                            <h3 class="text-xs font-medium text-slate-500 uppercase tracking-widest mb-6 border-b border-white/[0.04] pb-3">Equipment Needed</h3>
+                            <div class="space-y-6">
+                                <div class="space-y-2.5">
+                                    <label for="reqEquip" class="text-xs font-light text-slate-400">What equipment are you looking to rent? *</label>
+                                    <textarea id="reqEquip" rows="3" required="" placeholder="e.g. 2 active speakers, 1 subwoofer, 1 wireless mic, basic wash lighting..." class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-4 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-300 resize-none"></textarea>
+                                </div>
+                                <div class="space-y-2.5">
+                                    <label for="reqNotes" class="text-xs font-light text-slate-400">Additional Notes (Delivery, setup needs, etc.)</label>
+                                    <textarea id="reqNotes" rows="2" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-4 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-300 resize-none"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-6">
+                            <button type="submit" id="rental-submit-btn" class="w-full bg-slate-100 text-[#06080c] px-6 py-5 text-sm font-medium rounded-2xl hover:bg-white hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-300 flex justify-center items-center gap-2">
+                                Submit Rental Request
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================= SALES PAGE ========================= -->
+        <div id="page-sales" class="page-section hidden pt-24 pb-32">
+            <div class="max-w-7xl mx-auto px-6 mt-12 md:mt-20">
+                <!-- Header -->
+                <div class="max-w-3xl mb-24 relative z-10">
+                    <div class="absolute -top-20 -left-20 w-[400px] h-[400px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+                    <h1 class="text-5xl md:text-7xl font-normal tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-8 leading-[1.1] relative z-10">Used &amp; Refurbished Gear</h1>
+                    <p class="text-base md:text-lg text-slate-400 leading-relaxed font-light mb-10 relative z-10">
+                        We offer a rotating inventory of tested, repaired, and fully restored equipment. Whether you're looking for vintage hi-fi home audio or reliable retired stage gear.
+                    </p>
+                </div>
+
+                <!-- Info Box -->
+                <div class="mb-20 p-8 rounded-[2rem] border border-white/[0.04] bg-[#0a0c10]/80 flex items-start gap-5 backdrop-blur-xl shadow-2xl relative z-10">
+                    <iconify-icon icon="solar:info-circle-linear" class="text-3xl text-sky-400 flex-shrink-0 drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]" stroke-width="1.5"></iconify-icon>
+                    <div>
+                        <h3 class="text-lg font-normal tracking-tight text-slate-100 mb-2">Inventory Changes Fast</h3>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed">
+                            Because we sell what we fix and retire, our stock moves quickly. We do not keep a live online catalog. The best way to check current stock or request specific gear is to <a href="tel:2404500308" class="text-slate-200 hover:text-white underline decoration-white/20 underline-offset-4 transition-colors">give us a call</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Grid -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24 relative z-10">
+                    <div class="p-10 rounded-[2rem] bg-[#0a0c10]/60 border border-white/[0.03] hover:bg-[#0a0c10] hover:border-white/[0.08] transition-colors group">
+                        <iconify-icon icon="solar:vinyl-record-linear" class="text-4xl text-sky-500 mb-6 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.6)] transition-all" stroke-width="1.5"></iconify-icon>
+                        <h4 class="text-xl font-normal tracking-tight text-slate-100 mb-3">Vintage Audio</h4>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">Restored receivers, turntables, and classic home audio. Properly recapped and bench-tested.</p>
+                        <p class="text-xs text-slate-600 uppercase tracking-widest font-medium">Pioneer, Marantz, Sony</p>
+                    </div>
+                    <div class="p-10 rounded-[2rem] bg-[#0a0c10]/60 border border-white/[0.03] hover:bg-[#0a0c10] hover:border-white/[0.08] transition-colors group">
+                        <iconify-icon icon="solar:slider-minimalistic-horizontal-linear" class="text-4xl text-sky-500 mb-6 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.6)] transition-all" stroke-width="1.5"></iconify-icon>
+                        <h4 class="text-xl font-normal tracking-tight text-slate-100 mb-3">Refurbished Pro Audio</h4>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">Mixers, power amps, and rack gear repaired in-house. Professional reliability at a lower cost.</p>
+                        <p class="text-xs text-slate-600 uppercase tracking-widest font-medium">Analog &amp; Digital Consoles</p>
+                    </div>
+                    <div class="p-10 rounded-[2rem] bg-[#0a0c10]/60 border border-white/[0.03] hover:bg-[#0a0c10] hover:border-white/[0.08] transition-colors group">
+                        <iconify-icon icon="solar:speaker-minimalistic-linear" class="text-4xl text-sky-500 mb-6 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.6)] transition-all" stroke-width="1.5"></iconify-icon>
+                        <h4 class="text-xl font-normal tracking-tight text-slate-100 mb-3">Used Event Speakers</h4>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">Passive/active speakers and subs traded in or retired from our rental fleet. Tested and working.</p>
+                        <p class="text-xs text-slate-600 uppercase tracking-widest font-medium">Great for Practice Spaces</p>
+                    </div>
+                </div>
+
+                <div class="text-center pt-16 border-t border-white/[0.04]">
+                    <a href="tel:2404500308" class="inline-flex items-center justify-center gap-2 bg-slate-100 text-[#06080c] px-10 py-5 text-sm font-medium rounded-full hover:bg-white hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-300">
+                        <iconify-icon icon="solar:phone-linear" stroke-width="1.5"></iconify-icon>
+                        Call to Check Inventory
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ========================= CONTACT PAGE ========================= -->
+        <div id="page-contact" class="page-section hidden pt-24 pb-32">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start mt-12 md:mt-20">
+
+                    <!-- Info -->
+                    <div class="relative z-10">
+                        <div class="absolute -top-20 -left-20 w-[400px] h-[400px] bg-sky-600/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+                        <h1 class="text-5xl md:text-7xl font-normal tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-8 leading-[1.1] relative z-10">Contact ProTech</h1>
+                        <p class="text-base text-slate-400 mb-16 font-light leading-relaxed max-w-md relative z-10">
+                            Need an estimate, asking about a repair status, or looking to buy gear? Reach out. We operate locally in Silver Spring and reply promptly.
+                        </p>
+
+                        <div class="space-y-10 relative z-10">
+                            <div class="flex items-start gap-6 group cursor-default">
+                                <div class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-slate-400 group-hover:border-sky-500/30 group-hover:bg-sky-500/[0.02] group-hover:shadow-[0_0_30px_rgba(56,189,248,0.1)] transition-all duration-500 shadow-2xl">
+                                    <iconify-icon icon="solar:phone-linear" stroke-width="1.5" class="text-2xl group-hover:text-sky-400 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.8)] transition-all"></iconify-icon>
+                                </div>
+                                <div class="pt-1">
+                                    <h4 class="text-xs font-medium text-slate-500 uppercase tracking-widest mb-2">Phone</h4>
+                                    <a href="tel:2404500308" class="text-xl text-slate-200 hover:text-white transition-colors font-normal">(240) 450-0308</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-6 group cursor-default">
+                                <div class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-slate-400 group-hover:border-sky-500/30 group-hover:bg-sky-500/[0.02] group-hover:shadow-[0_0_30px_rgba(56,189,248,0.1)] transition-all duration-500 shadow-2xl">
+                                    <iconify-icon icon="solar:letter-linear" stroke-width="1.5" class="text-2xl group-hover:text-sky-400 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.8)] transition-all"></iconify-icon>
+                                </div>
+                                <div class="pt-1">
+                                    <h4 class="text-xs font-medium text-slate-500 uppercase tracking-widest mb-2">Email</h4>
+                                    <a href="mailto:protech@gmail.com" class="text-xl text-slate-200 hover:text-white transition-colors font-normal">protech@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-6 group cursor-default">
+                                <div class="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-slate-400 group-hover:border-sky-500/30 group-hover:bg-sky-500/[0.02] group-hover:shadow-[0_0_30px_rgba(56,189,248,0.1)] transition-all duration-500 shadow-2xl">
+                                    <iconify-icon icon="solar:map-point-linear" stroke-width="1.5" class="text-2xl group-hover:text-sky-400 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.8)] transition-all"></iconify-icon>
+                                </div>
+                                <div class="pt-1">
+                                    <h4 class="text-xs font-medium text-slate-500 uppercase tracking-widest mb-2">Silver Spring Shop</h4>
+                                    <p class="text-base text-slate-200 leading-relaxed mb-4 font-light">12110 Tech Road<br>Silver Spring, MD 20904</p>
+                                    <a href="https://maps.google.com/?q=12110+Tech+Road+Silver+Spring+MD+20904" target="_blank" rel="noopener" class="text-xs text-sky-400 hover:text-sky-300 font-medium transition-colors inline-flex items-center gap-1.5 bg-sky-500/10 border border-sky-500/20 px-4 py-2 rounded-full">
+                                        View on Maps <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form -->
+                    <div class="bg-[#0a0c10]/80 border border-white/[0.04] rounded-[2.5rem] p-8 md:p-12 backdrop-blur-2xl relative overflow-hidden shadow-[0_16px_64px_rgba(0,0,0,0.5)]">
+                        <div class="absolute -top-40 -right-40 w-96 h-96 bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+                        
+                        <div id="form-success" class="hidden mb-8 p-5 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center gap-4 text-sky-400 text-sm font-medium shadow-[0_0_20px_rgba(56,189,248,0.1)]">
+                            <iconify-icon icon="solar:check-circle-linear" class="text-2xl flex-shrink-0 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]"></iconify-icon>
+                            <span>Message sent securely. We'll be in touch.</span>
+                        </div>
+
+                        <form id="contact-form" class="space-y-6 relative z-10">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="space-y-2.5">
+                                    <label for="firstName" class="text-xs font-light text-slate-400">First Name</label>
+                                    <input type="text" id="firstName" required="" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-300">
+                                </div>
+                                <div class="space-y-2.5">
+                                    <label for="lastName" class="text-xs font-light text-slate-400">Last Name</label>
+                                    <input type="text" id="lastName" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-300">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2.5">
+                                <label for="email" class="text-xs font-light text-slate-400">Email Address</label>
+                                <input type="email" id="email" required="" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-300">
+                            </div>
+
+                            <div class="space-y-2.5">
+                                <label for="serviceType" class="text-xs font-light text-slate-400">Inquiry Type</label>
+                                <div class="relative">
+                                    <select id="serviceType" required="" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-3.5 text-sm text-slate-100 outline-none transition-all duration-300 cursor-pointer">
+                                        <option value="" disabled="" selected="">Select an option...</option>
+                                        <option value="repair">Equipment Repair</option>
+                                        <option value="sales">Buying Gear</option>
+                                        <option value="other">General Question</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-5 flex items-center pointer-events-none text-slate-500">
+                                        <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2.5">
+                                <label for="details" class="text-xs font-light text-slate-400">Message</label>
+                                <textarea id="details" rows="5" class="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl px-5 py-4 text-sm text-slate-100 placeholder-slate-600 outline-none transition-all duration-300 resize-none"></textarea>
+                            </div>
+
+                            <div class="pt-2">
+                                <button type="submit" id="submit-btn" class="w-full bg-slate-100 text-[#06080c] px-6 py-5 text-sm font-medium rounded-2xl hover:bg-white hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-300 flex justify-center items-center gap-2">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.04] bg-[#040508] pt-24 pb-12 relative z-20">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+            <div class="md:col-span-2">
+                <a href="#home" class="flex items-center gap-3 mb-6">
+                    <span class="text-slate-100 font-medium tracking-tighter text-lg">ProTech</span>
+                </a>
+                <p class="text-sm text-slate-500 font-light leading-relaxed max-w-sm mb-6">
+                    Component-level audio repair and premium event equipment rentals in Silver Spring, Maryland. A trusted local business.
+                </p>
+                <div class="flex gap-4">
+                    <div class="w-10 h-10 rounded-full bg-white/[0.03] border border-white/[0.08] flex items-center justify-center hover:bg-white/[0.08] hover:border-white/[0.2] transition-colors cursor-pointer text-slate-400 hover:text-white">
+                        <iconify-icon icon="solar:global-linear"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-xs font-medium text-slate-100 mb-6 tracking-widest uppercase">Services</h4>
+                <ul class="space-y-4 text-sm text-slate-400 font-light">
+                    <li><a href="#repairs" class="hover:text-slate-100 transition-colors">Repairs</a></li>
+                    <li><a href="#rentals" class="hover:text-slate-100 transition-colors">Rentals</a></li>
+                    <li><a href="#rental-request" class="hover:text-slate-100 transition-colors">Request Rental</a></li>
+                    <li><a href="#sales" class="hover:text-slate-100 transition-colors">Sales</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-xs font-medium text-slate-100 mb-6 tracking-widest uppercase">Contact</h4>
+                <ul class="space-y-4 text-sm text-slate-400 font-light">
+                    <li><a href="tel:2404500308" class="hover:text-slate-100 transition-colors flex items-center gap-3"><iconify-icon icon="solar:phone-linear" class="text-slate-500"></iconify-icon> (240) 450-0308</a></li>
+                    <li><a href="mailto:protech@gmail.com" class="hover:text-slate-100 transition-colors flex items-center gap-3"><iconify-icon icon="solar:letter-linear" class="text-slate-500"></iconify-icon> protech@gmail.com</a></li>
+                    <li class="flex items-start gap-3 pt-2"><iconify-icon icon="solar:map-point-linear" class="text-slate-500 mt-1"></iconify-icon> 12110 Tech Road<br>Silver Spring, MD 20904</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 border-t border-white/[0.04] pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-xs text-slate-600 font-light tracking-wide">
+                © 2026 ProTech Audio. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const pages = ['home', 'repairs', 'rentals', 'rental-request', 'sales', 'contact'];
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function navigate() {
+            let hash = window.location.hash.substring(1);
+            if (!pages.includes(hash)) hash = 'home';
+
+            pages.forEach((p) => {
+                const el = document.getElementById('page-' + p);
+                if (!el) return;
+                if (p === hash) {
+                    el.classList.remove('hidden');
+                    el.classList.add('block', 'page-enter');
+                } else {
+                    el.classList.add('hidden');
+                    el.classList.remove('block', 'page-enter');
+                }
+            });
+
+            document.querySelectorAll('.desktop-nav-link').forEach((link) => {
+                const active = link.getAttribute('href') === '#' + hash;
+                link.classList.toggle('text-slate-100', active);
+                link.classList.toggle('text-slate-400', !active);
+            });
+
+            document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+                const active = link.getAttribute('href') === '#' + hash;
+                link.classList.toggle('text-slate-100', active);
+                link.classList.toggle('font-medium', active);
+                link.classList.toggle('text-slate-400', !active);
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function setButtonState(button, label) {
+            if (!button) return;
+            button.textContent = label;
+            button.disabled = true;
+            button.setAttribute('aria-disabled', 'true');
+        }
+
+        function lockForm(formElement) {
+            if (!formElement) return;
+            formElement.querySelectorAll('input, textarea, select, button').forEach((el) => {
+                el.disabled = true;
+            });
+        }
+
+        window.addEventListener('hashchange', navigate);
+        window.addEventListener('load', navigate);
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+            });
+        }
+
+        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+            link.addEventListener('click', () => {
+                if (mobileMenu) mobileMenu.classList.add('hidden');
+                if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Demo-only forms. These do not send data anywhere yet.
+        const form = document.getElementById('contact-form');
+        const successBanner = document.getElementById('form-success');
+        const submitBtn = document.getElementById('submit-btn');
+
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                setButtonState(submitBtn, 'Sending...');
+
+                window.setTimeout(() => {
+                    successBanner?.classList.remove('hidden');
+                    successBanner?.classList.add('flex');
+                    if (submitBtn) {
+                        submitBtn.textContent = 'Sent Successfully';
+                        submitBtn.classList.replace('bg-slate-100', 'bg-white/[0.05]');
+                        submitBtn.classList.replace('text-[#06080c]', 'text-slate-500');
+                        submitBtn.classList.remove('hover:bg-white', 'hover:-translate-y-0.5', 'hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]');
+                    }
+                    lockForm(form);
+                }, 800);
+            });
+        }
+
+        const rentalForm = document.getElementById('rental-request-form');
+        const rentalSuccessBanner = document.getElementById('rental-form-success');
+        const rentalSubmitBtn = document.getElementById('rental-submit-btn');
+
+        if (rentalForm) {
+            rentalForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                setButtonState(rentalSubmitBtn, 'Submitting Request...');
+
+                window.setTimeout(() => {
+                    rentalSuccessBanner?.classList.remove('hidden');
+                    rentalSuccessBanner?.classList.add('flex');
+                    if (rentalSubmitBtn) {
+                        rentalSubmitBtn.textContent = 'Request Submitted';
+                        rentalSubmitBtn.classList.replace('bg-slate-100', 'bg-white/[0.05]');
+                        rentalSubmitBtn.classList.replace('text-[#06080c]', 'text-slate-500');
+                        rentalSubmitBtn.classList.remove('hover:bg-white', 'hover:-translate-y-0.5', 'hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]');
+                    }
+                    lockForm(rentalForm);
+                }, 1000);
+            });
+        }
+    </script>
+
+</body></html>
