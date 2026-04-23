@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action https://formspree.io; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://code.iconify.design; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://formspree.io; frame-src 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=()">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <title>Schedule a Repair | ProTech Audio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer crossorigin="anonymous" referrerpolicy="strict-origin-when-cross-origin"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07080a;
+      --bg-card: #0d0f13;
+      --border: rgba(255,255,255,0.05);
+      --amber: #f59e0b;
+      --amber-glow: rgba(245,158,11,0.35);
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #94a3b8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+    .font-mono { font-family: 'Space Mono', monospace; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(245,158,11,0.25); border-radius: 9999px; }
+    ::selection { background: rgba(245,158,11,0.2); color: #fff; }
+    body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9998; }
+    @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+    .anim-zoom { animation: slowZoom 28s alternate infinite ease-in-out; }
+    @keyframes ambientPulse { 0%,100% { opacity: 0.25; } 50% { opacity: 0.55; } }
+    .anim-pulse { animation: ambientPulse 7s infinite ease-in-out; }
+    .page-enter { animation: pageIn 0.55s cubic-bezier(0.16,1,0.3,1) forwards; }
+    @keyframes pageIn { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+    .sec-label { display: flex; align-items: center; gap: 10px; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+    .sec-label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--amber); flex-shrink: 0; }
+    input, select, textarea { color-scheme: dark; }
+    select, input[type="date"] { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+    input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(0.4); cursor: pointer; }
+    input:focus, select:focus, textarea:focus { outline: none; box-shadow: 0 0 0 1px rgba(245,158,11,0.4), 0 0 18px rgba(245,158,11,0.07); border-color: rgba(245,158,11,0.25) !important; }
+    .btn-amber { background: linear-gradient(135deg, #d97706, #f59e0b); color: #07080a; font-weight: 600; transition: all 0.3s ease; }
+    .btn-amber:hover { background: linear-gradient(135deg, #f59e0b, #fbbf24); transform: translateY(-1px); box-shadow: 0 0 32px rgba(245,158,11,0.45); }
+    .btn-ghost { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); color: #e2e8f0; transition: all 0.3s ease; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.18); }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 1.75rem; transition: border-color 0.4s ease, box-shadow 0.4s ease; }
+    .card:hover { border-color: rgba(245,158,11,0.22); box-shadow: 0 0 44px rgba(245,158,11,0.07); }
+  </style>
+</head>
+<body class="text-slate-400 min-h-screen flex flex-col">
+
+<nav class="fixed top-0 w-full z-50 bg-[#07080a]/70 backdrop-blur-2xl border-b border-white/[0.04]">
+  <div class="hidden md:flex items-center justify-center gap-8 py-1.5 bg-black/30 border-b border-white/[0.03] text-xs font-light text-slate-500 tracking-wider">
+    <span class="flex items-center gap-1.5">
+      <iconify-icon icon="solar:map-point-linear" class="text-amber-500" style="filter:drop-shadow(0 0 6px rgba(245,158,11,0.6))"></iconify-icon>
+      12110 Tech Road, Silver Spring, MD
+    </span>
+    <span class="w-px h-3 bg-slate-800"></span>
+    <span class="flex items-center gap-1.5">
+      <iconify-icon icon="solar:phone-linear" class="text-amber-500" style="filter:drop-shadow(0 0 6px rgba(245,158,11,0.6))"></iconify-icon>
+      (240) 450-0308
+    </span>
+    <span class="w-px h-3 bg-slate-800"></span>
+    <span class="flex items-center gap-1.5">
+      <iconify-icon icon="solar:clock-circle-linear" class="text-amber-500" style="filter:drop-shadow(0 0 6px rgba(245,158,11,0.6))"></iconify-icon>
+      Local Drop-off &amp; Diagnostics
+    </span>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html#home" class="group flex items-center gap-2.5">
+      <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg,#d97706,#f59e0b); box-shadow: 0 0 16px rgba(245,158,11,0.4);">
+        <iconify-icon icon="solar:soundwave-bold" class="text-sm text-black"></iconify-icon>
+      </div>
+      <span class="font-display text-2xl text-slate-100 tracking-wide group-hover:text-amber-400 transition-colors duration-300">ProTech</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm font-light">
+      <a href="index.html#home" class="text-slate-400 hover:text-slate-100 transition-colors duration-300">Home</a>
+      <a href="index.html#repairs" class="text-slate-400 hover:text-slate-100 transition-colors duration-300">Repairs</a>
+      <a href="index.html#rentals" class="text-slate-400 hover:text-slate-100 transition-colors duration-300">Rentals</a>
+      <a href="index.html#sales" class="text-slate-400 hover:text-slate-100 transition-colors duration-300">Sales</a>
+      <a href="index.html#contact" class="text-slate-400 hover:text-slate-100 transition-colors duration-300">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="tel:2404500308" class="hidden lg:inline-flex items-center gap-2 btn-amber text-xs px-5 py-2.5 rounded-full">
+        <iconify-icon icon="solar:phone-bold" class="text-black"></iconify-icon>
+        (240) 450-0308
+      </a>
+      <a href="index.html#home" class="md:hidden text-slate-400 hover:text-slate-100 p-1 transition-colors" aria-label="Back to home">
+        <iconify-icon icon="solar:home-2-linear" class="text-xl"></iconify-icon>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main class="flex-grow page-enter">
+  <section class="relative overflow-hidden pt-32 pb-20 md:pb-24 min-h-screen flex items-center">
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?auto=format&fit=crop&w=1800&q=80" alt="Audio repair workspace" class="w-full h-full object-cover anim-zoom opacity-20 mix-blend-lighten">
+      <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(7,8,10,0.78) 0%, rgba(7,8,10,0.92) 55%, #07080a 100%)"></div>
+    </div>
+
+    <div class="absolute top-24 left-1/4 w-[42vw] h-[32vh] rounded-full pointer-events-none anim-pulse z-0" style="background: radial-gradient(ellipse, rgba(245,158,11,0.11), transparent 70%); filter:blur(60px)"></div>
+    <div class="absolute bottom-16 right-1/4 w-[30vw] h-[26vh] rounded-full pointer-events-none z-0" style="background: radial-gradient(ellipse, rgba(34,211,238,0.05), transparent 70%); filter:blur(80px);"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+      <div class="grid lg:grid-cols-[0.95fr,1.05fr] gap-10 xl:gap-16 items-start">
+        <div>
+          <div class="sec-label">Schedule a Repair</div>
+          <h1 class="font-display text-[clamp(3.2rem,8vw,6.6rem)] leading-[0.9] text-white mb-6" style="text-shadow: 0 0 60px rgba(245,158,11,0.15)">
+            Book Your<br>
+            <span style="background: linear-gradient(135deg,#f59e0b,#fbbf24); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Repair Drop-Off</span>
+          </h1>
+          <p class="text-base md:text-lg text-slate-300 leading-relaxed font-light max-w-xl mb-8">
+            Fill out the form and ProTech will review your equipment details before your drop-off. Estimates and timelines are only confirmed after inspection.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            <div class="card p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2);">
+                  <iconify-icon icon="solar:wad-of-money-linear" class="text-xl text-amber-400"></iconify-icon>
+                </div>
+                <div class="text-slate-100 font-medium">$75 Bench Fee</div>
+              </div>
+              <p class="text-sm text-slate-400 font-light leading-relaxed">Applied toward the repair total if you approve the estimate.</p>
+            </div>
+            <div class="card p-5">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2);">
+                  <iconify-icon icon="solar:cpu-bolt-linear" class="text-xl text-amber-400"></iconify-icon>
+                </div>
+                <div class="text-slate-100 font-medium">Component-Level Diagnostics</div>
+              </div>
+              <p class="text-sm text-slate-400 font-light leading-relaxed">Mixers, amps, speakers, keyboards, DJ gear, and vintage hi-fi.</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="index.html#home" class="btn-ghost inline-flex items-center justify-center gap-2 px-8 py-4 text-sm rounded-full">
+              <iconify-icon icon="solar:arrow-left-linear" class="text-amber-400"></iconify-icon>
+              Back to Home
+            </a>
+            <a href="tel:2404500308" class="btn-amber inline-flex items-center justify-center gap-2 px-8 py-4 text-sm rounded-full">
+              <iconify-icon icon="solar:phone-bold" class="text-black"></iconify-icon>
+              Call the Shop
+            </a>
+          </div>
+        </div>
+
+        <div class="card p-7 md:p-9 relative overflow-hidden">
+          <div class="absolute -right-16 -top-16 w-48 h-48 rounded-full" style="background: radial-gradient(ellipse, rgba(245,158,11,0.08), transparent 70%); filter: blur(50px);"></div>
+          <form id="repair-form" class="space-y-8 relative z-10" action="https://formspree.io/f/mwvrpqqq" method="POST" accept-charset="UTF-8">
+            <input type="hidden" name="form_type" value="Repair Request">
+            <input type="hidden" name="_subject" value="New ProTech Repair Request">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+
+            <div>
+              <h2 class="font-display text-3xl text-white mb-2">Repair Request Form</h2>
+              <p class="text-sm text-slate-400 font-light">Tell us what you are bringing in and when you want to stop by.</p>
+            </div>
+
+            <div>
+              <h3 class="font-mono text-xs text-slate-500 uppercase tracking-widest mb-5 pb-3 border-b border-white/[0.04]">Contact Information</h3>
+              <div class="grid md:grid-cols-2 gap-5">
+                <div class="space-y-2 md:col-span-2">
+                  <label class="text-xs font-light text-slate-400">Full Name *</label>
+                  <input type="text" name="full_name" required class="w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-slate-100 placeholder-slate-600 transition-all duration-300">
+                </div>
+                <div class="space-y-2">
+                  <label class="text-xs font-light text-slate-400">Phone Number *</label>
+                  <input type="tel" name="phone" required class="w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-slate-100 placeholder-slate-600 transition-all duration-300">
+                </div>
+                <div class="space-y-2">
+                  <label class="text-xs font-light text-slate-400">Email Address *</label>
+                  <input type="email" name="email" required class="w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-slate-100 placeholder-slate-600 transition-all duration-300">
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-mono text-xs text-slate-500 uppercase tracking-widest mb-5 pb-3 border-b border-white/[0.04]">Equipment Details</h3>
+              <div class="grid md:grid-cols-2 gap-5">
+                <div class="space-y-2 relative">
+                  <label class="text-xs font-light text-slate-400">Equipment Type *</label>
+                  <select name="equipment_type" required class="w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-slate-100 transition-all duration-300 cursor-pointer">
+                    <option value="" disabled selected>Select equipment type...</option>
+                    <option value="mixer">Mixer / Console</option>
+                    <option value="speaker">Speaker / Subwoofer</option>
+                    <option value="amplifier">Amplifier / Receiver</option>
+                    <option value="keyboard">Keyboard / Synth</option>
+                    <option value="dj">DJ Controller / Media Player</option>
+                    <option value="turntable">Turntable / Hi-Fi</option>
+                    <option value="wireless">Wireless Mic System</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div class="absolute right-4 bottom-3.5 pointer-events-none text-slate-500"><iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon></div>
+                </div>
+                <div class="space-y-2">
+                  <label class="text-xs font-light text-slate-400">Brand / Model *</label>
+                  <input type="text" name="brand_model" required placeholder="Example: Yamaha MG16XU" class="w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-slate-100 placeholder-slate-600 transition-all duration-300">
+                </div>
+                <div class="space-y-2 md:col-span-2">
+                  <label class="text-xs font-light text-slate-400">Issue Description *</label>
+                  <textarea name="issue_description" rows="5" required placeholder="Describe the problem, symptoms, power issue, damaged channel, speaker noise, intermittent audio, etc." class="w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-4 text-sm text-slate-100 placeholder-slate-600 transition-all duration-300 resize-none"></textarea>
+                </div>
+                <div class="space-y-2">
+                  <label class="text-xs font-light text-slate-400">Preferred Drop-Off Date *</label>
+                  <input type="date" name="preferred_dropoff_date" required class="w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-slate-100 transition-all duration-300">
+                </div>
+                <div class="space-y-2">
+                  <label class="text-xs font-light text-slate-400">Preferred Time Window</label>
+                  <input type="text" name="preferred_time_window" placeholder="Example: Afternoon or after 3 PM" class="w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-slate-100 placeholder-slate-600 transition-all duration-300">
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" class="btn-amber w-full py-4 text-sm rounded-xl flex items-center justify-center gap-2">
+                Schedule My Repair
+                <iconify-icon icon="solar:arrow-right-linear" class="text-black"></iconify-icon>
+              </button>
+            </div>
+          </form>
+
+          <p class="text-xs text-slate-500 font-light leading-relaxed mt-5 relative z-10">By submitting this form, you agree that ProTech may contact you about your request. Repair estimates and timelines are provided after inspection only. No repair outcome is guaranteed before evaluation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-white/[0.04] bg-black/40 pt-10 pb-10 relative z-20">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div>
+      <div class="flex items-center gap-2.5 mb-2">
+        <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg,#d97706,#f59e0b);">
+          <iconify-icon icon="solar:soundwave-bold" class="text-sm text-black"></iconify-icon>
+        </div>
+        <span class="font-display text-2xl text-slate-100 tracking-wide">ProTech</span>
+      </div>
+      <p class="text-sm text-slate-500 font-light leading-relaxed">Component-level audio repair and premium event equipment rentals in Silver Spring, Maryland.</p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="index.html#home" class="btn-ghost inline-flex items-center justify-center gap-2 px-6 py-3 text-sm rounded-full">Back to Home</a>
+      <a href="index.html#contact" class="btn-amber inline-flex items-center justify-center gap-2 px-6 py-3 text-sm rounded-full">General Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
